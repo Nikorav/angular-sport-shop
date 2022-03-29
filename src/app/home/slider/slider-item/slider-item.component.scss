@@ -1,0 +1,30 @@
+.slider-item{
+  max-width: 1280px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-image{
+    width: 100%;
+    max-width: 550px;
+    display: flex;
+    align-items: center;
+  }
+  &-text{
+    width: 100%;
+    max-width: 500px;
+  }
+  &-title{
+    font-size: 30px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  &-definition{
+    font-size: 18px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+

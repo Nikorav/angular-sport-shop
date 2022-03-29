@@ -1,0 +1,27 @@
+.container{
+  background-color: black;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .nav-list{
+    width: 90%;
+    padding: 30px;
+    display: flex;
+    .nav-link{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      color: white;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 25px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      &:hover{
+        color: red;
+      }
+    }
+  }
+}

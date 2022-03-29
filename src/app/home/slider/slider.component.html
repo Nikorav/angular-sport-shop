@@ -1,0 +1,12 @@
+<div class="container">
+  <ng-container *ngFor="let item of sliderItems; let i = index" >
+    <app-slider-item *ngIf="index === i" [item]=item></app-slider-item>
+  </ng-container>
+  <div class="slider-dots">
+    <button class="slider-dot"
+            *ngFor="let dot of sliderItems  let i = index"
+            [class.active]="index === i"
+            (click)="_onChangeSlide(i)"
+            ></button>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="slider-item" *ngIf="item">
+  <div class="slider-item-image">
+    <img [src]="item.image" [alt]="item.title" class="slider-item-image">
+  </div>
+  <div class="slider-item-text">
+    <h2 class="slider-item-title">{{item.title}}</h2>
+    <p class="slider-item-definition">{{item.definition}}</p>
+  </div>
+</div>
