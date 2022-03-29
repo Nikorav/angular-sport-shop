@@ -20,7 +20,7 @@ export class SliderComponent implements OnInit {
       definition: 'Функциональная одежда от мировых брендов',
     },
     {
-      title: 'test 2!',
+      title: 'test 2 !',
       image: '../../../../assets/slider.jpg',
       definition: 'Функциональная одежда от мировых брендов',
     }

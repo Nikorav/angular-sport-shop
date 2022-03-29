@@ -8,6 +8,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { HomeComponent } from './home/home.component';
 import { SliderComponent } from './home/slider/slider.component';
 import { SliderItemComponent } from './home/slider/slider-item/slider-item.component';
+import { BrandsComponent } from './home/brands/brands.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SliderItemComponent } from './home/slider/slider-item/slider-item.compo
     NavigationComponent,
     HomeComponent,
     SliderComponent,
-    SliderItemComponent
+    SliderItemComponent,
+    BrandsComponent
   ],
   imports: [
     BrowserModule,
