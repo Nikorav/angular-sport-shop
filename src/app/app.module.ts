@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { SliderComponent } from './home/slider/slider.component';
 import { SliderItemComponent } from './home/slider/slider-item/slider-item.component';
 import { BrandsComponent } from './home/brands/brands.component';
+import { CategoryPanelComponent } from './home/category-panel/category-panel.component';
+import { CategoryPanelItemComponent } from './home/category-panel/category-panel-item/category-panel-item.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { BrandsComponent } from './home/brands/brands.component';
     HomeComponent,
     SliderComponent,
     SliderItemComponent,
-    BrandsComponent
+    BrandsComponent,
+    CategoryPanelComponent,
+    CategoryPanelItemComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@
   height: auto;
   .header-content{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 40px 0;
     .logo{
@@ -21,7 +21,7 @@
       justify-content: space-between;
       align-items: center;
       position: relative;
-      .search-field{
+      &-field{
         border: none;
         border-bottom: 3px solid black;
         padding: 15px;

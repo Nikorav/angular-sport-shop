@@ -6,6 +6,7 @@ import {SliderItem} from "./types";
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
+
 export class SliderComponent implements OnInit {
 
   public sliderItems: SliderItem[] = [
@@ -25,12 +26,15 @@ export class SliderComponent implements OnInit {
       definition: 'Функциональная одежда от мировых брендов',
     }
   ];
-   public index: number = 0;
+
+  public index: number = 0;
 
   constructor() { }
-   public _onChangeSlide(index:number): void{
+
+  public _onChangeSlide(index:number) : void {
     this.index = index
-   }
+  }
+
   ngOnInit(): void {
   }
 

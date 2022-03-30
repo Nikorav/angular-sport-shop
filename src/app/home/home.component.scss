@@ -1,0 +1,16 @@
+app-slider{
+  width: 100%;
+  background-image: url("../../assets/background-slider.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+app-category-panel{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: lightgray;
+}

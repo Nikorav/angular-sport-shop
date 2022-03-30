@@ -4,7 +4,7 @@
   </ng-container>
   <div class="slider-dots">
     <button class="slider-dot"
-            *ngFor="let dot of sliderItems  let i = index"
+            *ngFor="let dot of sliderItems;  let i = index"
             [class.active]="index === i"
             (click)="_onChangeSlide(i)"
             ></button>

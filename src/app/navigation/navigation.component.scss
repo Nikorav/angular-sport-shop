@@ -5,9 +5,10 @@
   justify-content: center;
   align-items: center;
   .nav-list{
-    width: 90%;
+    width: 80%;
     padding: 30px;
     display: flex;
+    justify-content: space-between;
     .nav-link{
       display: flex;
       justify-content: space-around;
