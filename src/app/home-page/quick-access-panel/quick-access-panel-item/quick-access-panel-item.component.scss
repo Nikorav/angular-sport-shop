@@ -1,0 +1,40 @@
+.quick-access-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  max-width: 330px;
+  height: 100%;
+  border: gray solid 3px;
+  &-brand {
+    max-width: 60px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  &-image {
+    max-width: 280px;
+    height: 100%;
+    margin: auto;
+  }
+  &-id {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 20px;
+    padding-bottom: 10px;
+  }
+  &-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 20px
+  }
+  &-price {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+}

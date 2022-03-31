@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PanelItem } from './category-panel-item/types';
+import { CategoryItem } from './types';
 
 @Component({
   selector: 'app-category-panel',
@@ -9,7 +9,7 @@ import { PanelItem } from './category-panel-item/types';
 
 export class CategoryPanelComponent implements OnInit {
 
-  public panelItems : PanelItem[] = [
+  public categoryItems : CategoryItem[] = [
     {
       image: '../../../../assets/category-panel/functional_underwear.jpg',
       title: 'Фунциональное бельё',

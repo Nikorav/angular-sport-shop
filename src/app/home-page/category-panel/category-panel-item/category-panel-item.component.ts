@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PanelItem} from "./types";
+import {CategoryItem} from "../types";
 
 @Component({
   selector: 'app-category-panel-item',
@@ -9,7 +9,7 @@ import {PanelItem} from "./types";
 export class CategoryPanelItemComponent implements OnInit {
 
   @Input()
-  public item: PanelItem = {} as PanelItem;
+  public item?: CategoryItem;
 
   constructor() { }
 

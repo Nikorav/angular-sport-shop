@@ -9,7 +9,7 @@ import {SliderItem} from "../types";
 export class SliderItemComponent implements OnInit {
 
   @Input()
-  public item: SliderItem = {} as SliderItem;
+  public item?: SliderItem;
 
   constructor() { }
 

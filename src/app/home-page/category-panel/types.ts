@@ -1,4 +1,4 @@
-export type PanelItem = {
+export type CategoryItem = {
   image: string;
   title: string;
 }
