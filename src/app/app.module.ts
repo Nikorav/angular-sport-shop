@@ -13,6 +13,7 @@ import { CategoryPanelComponent } from './home-page/category-panel/category-pane
 import { CategoryPanelItemComponent } from './home-page/category-panel/category-panel-item/category-panel-item.component';
 import { QuickAccessPanelComponent } from './home-page/quick-access-panel/quick-access-panel.component';
 import { QuickAccessPanelItemComponent } from './home-page/quick-access-panel/quick-access-panel-item/quick-access-panel-item.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { QuickAccessPanelItemComponent } from './home-page/quick-access-panel/qu
     CategoryPanelComponent,
     CategoryPanelItemComponent,
     QuickAccessPanelComponent,
-    QuickAccessPanelItemComponent
+    QuickAccessPanelItemComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
