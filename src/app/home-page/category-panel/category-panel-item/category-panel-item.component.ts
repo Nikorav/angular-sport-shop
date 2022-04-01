@@ -11,7 +11,8 @@ export class CategoryPanelItemComponent implements OnInit {
   @Input()
   public item?: CategoryItem;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

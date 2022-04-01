@@ -1,5 +1,6 @@
 <div class="quick-access-panel">
-  <button class="left-move-btn slider-btn"><i class="fa fa-angle-left"></i></button>
-  <app-quick-access-panel-item *ngFor="let item of quickAccessItems" [item]="item"></app-quick-access-panel-item>
-  <button class="right-move-btn slider-btn"><i class="fa fa-angle-right"></i></button>
+  <button class="left-move-btn slider-btn" (click)="doSlide(-1)" [disabled]="isButtonDisabled"><i class="fa fa-angle-left"></i></button>
+  <app-quick-access-panel-item *ngFor="let item of marketItems; trackBy: trackByFn"
+                               [item]="item"></app-quick-access-panel-item>
+  <button class="right-move-btn slider-btn" (click)="doSlide(1)" [disabled]="isButtonDisabled"><i class="fa fa-angle-right"></i></button>
 </div>

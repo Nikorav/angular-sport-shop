@@ -11,7 +11,11 @@ export class QuickAccessPanelItemComponent implements OnInit {
   @Input()
   public item?: QuickAccessItem;
 
-  constructor() { }
+  @Input()
+  public itemTemplate: any;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }

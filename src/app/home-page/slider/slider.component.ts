@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SliderItem} from "./types";
 
 @Component({
@@ -29,9 +29,10 @@ export class SliderComponent implements OnInit {
 
   public index: number = 0;
 
-  constructor() { }
+  constructor() {
+  }
 
-  public _onChangeSlide(index:number) : void {
+  public onChangeSlide(index: number): void {
     this.index = index
   }
 

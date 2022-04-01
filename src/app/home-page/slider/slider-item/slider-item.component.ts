@@ -11,8 +11,10 @@ export class SliderItemComponent implements OnInit {
   @Input()
   public item?: SliderItem;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 }
