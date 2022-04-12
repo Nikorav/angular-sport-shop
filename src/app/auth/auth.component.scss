@@ -1,7 +1,9 @@
 .auth-page{
   width: 100%;
   min-height: 100vh;
-  background-image: url("../../assets/background-slider.jpg");
+  background-image: url("../../assets/background-auth.jpg");
+  background-position: center;
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,7 +57,7 @@
           width: 100%;
           height: 100%;
           box-shadow: 0 0 0 0;
-          color: rgba(211,63,141, 0.6);
+          color: red;
         }
         .auth-field:focus + .focus-input {
           -webkit-animation: anim-shadow 0.5s ease-in-out forwards;
@@ -101,15 +103,15 @@
           background-size: 50% 50%;
         }
         .input-checkbox:checked+label::before {
-          border-color: #0b76ef;
-          background-color: #0b76ef;
+          border-color: red;
+          background-color: red;
         }
         .input-checkbox:not(:disabled):not(:checked)+label:hover::before {
-          border-color: #b3d7ff;
+          border-color: lightpink;
         }
         .input-checkbox:not(:disabled):active+label::before {
-          background-color: #b3d7ff;
-          border-color: #b3d7ff;
+          background-color: lightpink;
+          border-color: lightpink;
         }
         .input-checkbox:focus+label::before {
           box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
@@ -118,7 +120,7 @@
           border-color: #d33f8d;
         }
         .input-checkbox:disabled+label::before {
-          background-color: #e9ecef;
+          background-color: lightpink;
         }
         .label-checkbox{
           font-family: sans-serif;
@@ -144,7 +146,7 @@
         text-transform: uppercase;
         border: none;
         outline: none;
-        background-color: #d33f8d;
+        background-color: red;
         color: white;
         transition: 0.4s;
         &:hover{
@@ -175,8 +177,8 @@
           margin-right: 5px;
         }
         &:hover{
-          color: #d33f8d;
-          border: 2px solid #d33f8d;
+          color: red;
+          border: 2px solid red;
         }
       }
       .registration-link{
@@ -185,10 +187,9 @@
         text-decoration: none;
         font-family: sans-serif;
         &:hover{
-          color: #d33f8d;
+          color: red;
         }
       }
-
     }
   }
 }

@@ -98,7 +98,6 @@ export class QuickAccessPanelComponent implements OnInit {
 
     if (direction === 1) {
       const lastItem = this.marketItems[this.marketItems.length - 1];
-
       const elemIndex = this.marketItems[this.itemsPerPage - 1]?.id === this.quickAccessItems[this.quickAccessItems.length - 1]?.id
         ? 0
         : this.quickAccessItems.findIndex((item) => item.id === lastItem.id) + 1;
