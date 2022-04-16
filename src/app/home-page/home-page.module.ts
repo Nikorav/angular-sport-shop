@@ -15,7 +15,12 @@ import {FooterComponent} from "../footer/footer.component";
 import {CommonModule} from "@angular/common";
 import {RouterModule, Routes} from "@angular/router";
 
-const routes: Routes = [{path: '', component: HomePageComponent}]
+const routes: Routes = [
+  {
+    path: '',
+    component: HomePageComponent
+  }
+];
 
 @NgModule(
   {
@@ -32,7 +37,8 @@ const routes: Routes = [{path: '', component: HomePageComponent}]
       QuickAccessPanelItemComponent,
       FooterComponent
     ],
-    imports: [CommonModule,
+    imports: [
+      CommonModule,
       RouterModule.forChild(routes)],
     exports: [RouterModule]
   }

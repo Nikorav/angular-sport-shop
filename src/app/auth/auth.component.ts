@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import firebase from "firebase/compat/app";
+import {AuthService} from "../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-auth',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
-  ngOnInit(): void {
+  public user: firebase.User | null = null;
+
+
+  public ngOnInit() {
+    this.authService.user$.subscribe((value : firebase.User | null) => this.user = value);
   }
 
+  public login(): void {
+    this.authService.googleSingIn().subscribe()
+  }
 }

@@ -1,25 +1,27 @@
 <div class="auth-page">
   <div class="container">
-    <form action="">
-      <h1 class="auth-title">Login</h1>
-      <div class="wrap-input">
-        <input type="email" class="auth-field" placeholder="Email">
-        <span class="focus-input"></span>
-      </div>
-      <div class="wrap-input">
-        <input type="password" class="auth-field" placeholder="Password">
-        <span class="focus-input"></span>
-      </div>
-      <div class="contact-form-checkbox">
+    <form class="auth-form">
+      <h2 class="form-title">Login</h2>
+      <label for="email" class="form-control">
+        <input class="form-control-input" type="text" id="email" placeholder="Email">
+      </label>
+      <label for="password" class="form-control">
+        <input class="form-control-input" type="password" id="password" placeholder="Password">
+      </label>
+      <label for="happy" class="form-control label-checkbox">
         <input type="checkbox" class="input-checkbox" id="happy">
-        <label for="happy" class="label-checkbox">Remember me</label>
-      </div>
-      <button class="form-submit-btn" routerLink="/home">Login</button>
-      <span>Or login with</span>
-      <a href="" class="google-acc-link">
-        <img src="../../assets/google-1.jpg" alt="">Google
-      </a>
-      <a href="" class="registration-link">Not a member?</a>
+        <span class="checkbox checkbox-control"></span>
+        <span class="control-title">
+          Remember me
+        </span>
+      </label>
+      <button class="form-button" routerLink="/home">Login</button>
     </form>
+    <h2 class="title auth-title">Or login with</h2>
+    <button (click)="login()" class="auth-button">
+      <img src="../../assets/google-1.jpg" alt="google icon">
+      Google
+    </button>
+    <a href="#" class="auth-link">Not a member?</a>
   </div>
 </div>
