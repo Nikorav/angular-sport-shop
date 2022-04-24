@@ -40,7 +40,7 @@ const routes: Routes = [
     imports: [
       CommonModule,
       RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule, HeaderComponent, NavigationComponent, FooterComponent]
   }
 )
 export class HomePageModule {

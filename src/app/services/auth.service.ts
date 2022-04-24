@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import firebase from "firebase/compat/app";
-import {from, Observable, ReplaySubject} from 'rxjs';
+import {from, Observable, ReplaySubject, tap} from 'rxjs';
 import AuthProvider = firebase.auth.AuthProvider;
 import UserCredential = firebase.auth.UserCredential;
 
@@ -14,9 +14,11 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth) {
     this.afAuth.authState
-      .subscribe((value: firebase.User | null) =>
-        this.user$.next(value)
-      );
+      .pipe(
+        tap((value: firebase.User | null) => {
+          this.user$.next(value);
+        })
+      ).subscribe();
   }
 
   public googleSingIn(): Observable<UserCredential> {
