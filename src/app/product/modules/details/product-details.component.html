@@ -1,0 +1,253 @@
+<section class="product" *ngIf="cart$ | async as cart">
+  <div class="container">
+    <h1 class="product-title">СПОРТИВНАЯ МАЙКА ADIDAS МУЖСКАЯ</h1>
+
+    <button class="button button-return"
+            (click)="onReturnButtonClick()">
+      Вернуться назад
+    </button>
+
+    <section class="product-section">
+
+      <section class="product-tags">
+        <article class="product-rating">
+          <div class="rating-star" *ngFor="let number of [1,2,3,4,5]">
+            <img src="../../../../assets/star_unfilled.png" alt="Star">
+          </div>
+        </article>
+        <article class="product-attribute">
+          <span class="product-attribute-label">
+            код:
+          </span>
+          <span class="product-attribute-value">
+            0000-00000-00000
+          </span>
+        </article>
+      </section>
+
+      <section class="product-wrapper">
+        <div class="product-column">
+          <div class="product-common">
+            <div class="product-photo">
+              <img src="../../../../assets/product-details/product.png" alt="Product Name">
+            </div>
+            <div class="product-info">
+              <ng-template [ngTemplateOutlet]="true ? inStock : outOfStock">
+              </ng-template>
+              <div class="product-brand">
+                <img src="../../../../assets/brands/adidas.jpg" alt="Brand Image" class="brand-image">
+              </div>
+              <h3 class="product-price" data-currency="руб.">
+                130.00
+              </h3>
+              <div class="product-size param">
+                <span class="product-size-label label">
+                  Размер:
+                </span>
+                <span class="product-size-value value">M</span>
+              </div>
+              <div class="product-color param">
+                <span class="product-color-label label">
+                  Цвет:
+                </span>
+                <span class="product-color-value value">Синий</span>
+              </div>
+              <!--    Компонент выбора размера        -->
+              <div class="product-size-control param">
+                <span class="product-color-label label">
+                  Размер:
+                </span>
+                <div class="size-control-items">
+                  <button class="size-control-item">XS</button>
+                  <button class="size-control-item">S</button>
+                  <button class="size-control-item active">M</button>
+                </div>
+              </div>
+              <div class="product-price-unit param">
+                <span class="product-color-label label">
+                  Цена указана за:
+                </span>
+                <span class="product-color-value value">Шт.</span>
+              </div>
+              <div class="product-actions">
+                <button class="product-action">
+                  <i class="fa fa-heart-o"></i>
+                </button>
+                <button class="product-action">
+                  <i class="fa fa-signal"></i>
+                </button>
+                <button class="product-action add-action"
+                        (click)="onAddToCartClick()">
+                  В корзину
+                </button>
+              </div>
+
+            </div>
+          </div>
+          <div class="product-qualities">
+            <h2 class="qualities-title title">Особенности:</h2>
+            <!--    Компонент таблицы        -->
+            <div class="qualities-table">
+              <div class="table-column">
+                <div class="table-cell table-label">Бренд</div>
+                <div class="table-cell table-label">Пол</div>
+                <div class="table-cell table-label">Состав</div>
+                <div class="table-cell table-label">Вид спорта</div>
+                <div class="table-cell table-label">Страна происхождения:</div>
+                <div class="table-cell table-label">Производитель:</div>
+                <div class="table-cell table-label">Сертификация:</div>
+              </div>
+              <!--     ngFor для того, что итерироваться по сущностям в таблице         -->
+              <div class="table-column"
+                   *ngFor="let i of [1]">
+                <div class="table-cell table-value">Adidas</div>
+                <div class="table-cell table-value">Мужчины</div>
+                <div class="table-cell table-value">100% полиэстер</div>
+                <div class="table-cell table-value">
+                  <!--          custom template          -->
+                  <div class="custom-template">
+                    <input type="checkbox" value="Бег" checked>
+                    Бег
+                  </div>
+                </div>
+                <div class="table-cell table-value">Китай</div>
+                <div class="table-cell table-value">"Craft of Scandinavia AB", Швеция, Evedalsgatan 5</div>
+                <div class="table-cell table-value">Товар сертифицирован, ЕАС</div>
+              </div>
+            </div>
+          </div>
+          <section class="product-testimonials">
+            <h2 class="title">Отзывы</h2>
+            <div class="testimonials">
+              <ng-container *ngIf="false; else emptyTestimonialsTemplate">
+                <div class="testimonial"></div>
+              </ng-container>
+            </div>
+            <div class="testimonials-control">
+              <button class="testimonials-control-button">НАПИСАТЬ ОТЗЫВ</button>
+              <form class="testimonials-control-form"
+                    *ngIf="false">
+
+              </form>
+            </div>
+          </section>
+        </div>
+        <div class="product-column">
+          <div class="product-accordion">
+            <div class="accordion-item">
+              <button class="accordion-item-control"
+                      (click)="openAccordionItem()">
+                Способы доставки
+
+                <ng-template [ngTemplateOutlet]="isAccordionItemOpen ? iconOpenTemplate : iconCloseTemplate">
+                </ng-template>
+              </button>
+              <div class="accordion-item-content"
+                   [class.visible]="isAccordionItemOpen">
+                <ul class="content-list">
+                  <li class="content-list-item">
+                    Самовывоз - бесплатно
+                  </li>
+                  <li class="content-list-item">
+                    Доставка курьерской службой – 8 рублей
+                    Бесплатная доставка по Беларуси при сумме заказа более 150 руб.
+                  </li>
+                </ul>
+                <a href="#" class="content-link">
+                  Подробнее о доставке
+                </a>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-item-control"
+                      (click)="openAccordionItem()">
+                Вариант оплаты
+
+                <ng-template [ngTemplateOutlet]="isAccordionItemOpen ? iconOpenTemplate : iconCloseTemplate">
+                </ng-template>
+              </button>
+              <div class="accordion-item-content"
+                   [class.visible]="isAccordionItemOpen">
+                <ul class="content-list">
+                  <li class="content-list-item">
+                    Наличными при получении
+                  </li>
+                  <li class="content-list-item">
+                    Безналичным способом: банковской картой, через систему АИС «Расчет» (ЕРИП)
+                  </li>
+                </ul>
+                <a href="#" class="content-link">
+                  Подробнее об оплате
+                </a>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-item-control"
+                      (click)="openAccordionItem()">
+                Наши преимущества
+
+                <ng-template [ngTemplateOutlet]="isAccordionItemOpen ? iconOpenTemplate : iconCloseTemplate">
+                </ng-template>
+              </button>
+              <div class="accordion-item-content"
+                   [class.visible]="isAccordionItemOpen">
+                <ul class="content-list">
+                  <li class="content-list-item">
+                    Скидка 2% при регистрации на сайте
+                  </li>
+                  <li class="content-list-item">
+                    Возврат и обмен товара в течение 30 дней со дня покупки
+                  </li>
+                  <li class="content-list-item">
+                    Только оригинальные товары
+                  </li>
+                  <li class="content-list-item">
+                    Гарантия качества
+                  </li>
+                  <li class="content-list-item">
+                    Система накопительных скидок
+                  </li>
+                  <li class="content-list-item">
+                    Доставка по всей Беларуси
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <button class="copy">
+            Скопировать ссылку
+            <i class="fa fa-copy"></i>
+          </button>
+        </div>
+      </section>
+    </section>
+  </div>
+</section>
+
+<ng-template #outOfStock>
+  <div class="product-availability button-error">
+    <i class="fa fa-times"></i>
+    Нет в наличии
+  </div>
+</ng-template>
+
+<ng-template #inStock>
+  <div class="product-availability button-ok">
+    <i class="fa fa-check"></i>
+    Есть в наличии
+  </div>
+</ng-template>
+
+<ng-template #iconCloseTemplate>
+  <i class="fa fa-chevron-down"></i>
+</ng-template>
+
+<ng-template #iconOpenTemplate>
+  <i class="fa fa-chevron-up"></i>
+</ng-template>
+
+<ng-template #emptyTestimonialsTemplate>
+  <p class="description">
+    Сообщения не найдены
+  </p>
+</ng-template>

@@ -1,6 +1,4 @@
 import {NgModule} from "@angular/core";
-import {HeaderComponent} from "../header/header.component";
-import {NavigationComponent} from "../navigation/navigation.component";
 import {HomePageComponent} from "./home-page.component";
 import {SliderComponent} from "./slider/slider.component";
 import {SliderItemComponent} from "./slider/slider-item/slider-item.component";
@@ -11,7 +9,6 @@ import {QuickAccessPanelComponent} from "./quick-access-panel/quick-access-panel
 import {
   QuickAccessPanelItemComponent
 } from "./quick-access-panel/quick-access-panel-item/quick-access-panel-item.component";
-import {FooterComponent} from "../footer/footer.component";
 import {CommonModule} from "@angular/common";
 import {RouterModule, Routes} from "@angular/router";
 
@@ -25,8 +22,6 @@ const routes: Routes = [
 @NgModule(
   {
     declarations: [
-      HeaderComponent,
-      NavigationComponent,
       HomePageComponent,
       SliderComponent,
       SliderItemComponent,
@@ -35,12 +30,11 @@ const routes: Routes = [
       CategoryPanelItemComponent,
       QuickAccessPanelComponent,
       QuickAccessPanelItemComponent,
-      FooterComponent
     ],
     imports: [
       CommonModule,
       RouterModule.forChild(routes)],
-    exports: [RouterModule, HeaderComponent, NavigationComponent, FooterComponent]
+    exports: [RouterModule]
   }
 )
 export class HomePageModule {

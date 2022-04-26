@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CrudService} from "./services/crud.service";
+import {combineLatest} from "rxjs";
+import {CartService} from "./services/cart.service";
 
 
 @Component({
@@ -10,9 +12,13 @@ import {CrudService} from "./services/crud.service";
 export class AppComponent implements OnInit{
   title = 'sport-shop';
 
-  constructor(private crudService: CrudService){}
+  constructor(private crudService: CrudService,
+              private cartService: CartService){}
 
   ngOnInit(): void {
-    this.crudService.fetchDataFromFirestore("items").subscribe(value => console.log(value))
+    combineLatest([
+      this.crudService.fetchDataFromFirestore("items"),
+      this.cartService.fetchCarts(),
+    ]).subscribe()
   }
 }

@@ -1,0 +1,49 @@
+<div class="cart">
+  <h2 class="title cart-title">
+    Корзина
+  </h2>
+  <ng-container *ngIf="cart$ | async; else emptyTemplate">
+    <div class="table">
+      <div class="row"
+           *ngFor="let item of cart.items; let index = index">
+        <div class="table-cell">
+          <span class="cart-item-value">
+            {{item.name}}
+          </span>
+        </div>
+        <div class="table-cell">
+          <span class="cart-item-value cart-item-currency">
+          {{item.price}}
+          </span>
+        </div>
+        <div class="table-cell">
+          <button (click)="onDecreaseProductQuantity(index)">
+            <i class="fa fa-minus"></i>
+          </button>
+          <span class="cart-item-quantity cart-item-value">
+            {{item.quantity}}
+          </span>
+          <button (click)="onIncreaseProductQuantity(index)">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+        <div class="table-cell">
+          <span class="cart-item-value cart-item-currency">
+            {{item.price * item.quantity}}
+          </span>
+        </div>
+        <div class="table-cell">
+          <button (click)="onDeleteProduct(index)">
+            <i class="fa fa-times"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+
+  <ng-template #emptyTemplate>
+    <p> Нет товаров в корзине, <a [routerLink]="catalogLink">добавьте их</a></p>
+  </ng-template>
+
+</div>

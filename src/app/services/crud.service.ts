@@ -18,7 +18,6 @@ export class CrudService {
         map((snapshot: firebase.firestore.DocumentSnapshot<T | any>) => {
           const {id} = snapshot;
           const data = snapshot.data();
-          console.log(data)
           return {
             id: id,
             ...data,
@@ -33,7 +32,6 @@ export class CrudService {
         map((actions: DocumentChangeAction<T | any>[]) => {
           return actions.map(document => {
             const data = document.payload.doc.data();
-            console.log(document.payload, document.payload.doc)
             const {id} = document.payload.doc;
             return {id: id, ...data} as T;
           });

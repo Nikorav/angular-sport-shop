@@ -1,0 +1,81 @@
+.cart {
+  max-width: 1280px;
+  padding: 20px 10px;
+  margin: 0 auto;
+  width: 100%;
+
+  &-title {
+    text-align: center;
+  }
+
+  p {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .table {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) 60px;
+      width: 100%;
+    }
+
+    .table-cell {
+      border: 1px solid black;
+      border-right: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0 8px;
+      padding: 20px 10px;
+
+      &:last-child {
+        border-right: 1px solid black;
+      }
+
+      button {
+        background: transparent;
+        max-width: 50px;
+        padding: 6px 0;
+        width: 100%;
+        line-height: 1;
+        font-size: 36px;
+        border: 1px solid black;
+      }
+    }
+  }
+
+
+  &-item {
+    &-value {
+      font-size: 36px;
+      line-height: 1;
+      padding: 7px 0;
+    }
+
+    &-currency {
+      position: relative;
+
+      &:after {
+        content: 'руб.';
+        margin-left: 8px;
+      }
+    }
+
+    &-quantity {
+      max-width: 100px;
+      width: 100%;
+      text-align: center;
+      background: #c4c4c4;
+    }
+  }
+}
+

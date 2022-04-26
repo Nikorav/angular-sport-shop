@@ -1,4 +1,5 @@
-<div class="quick-access-item" *ngIf="item">
+<div class="quick-access-item" *ngIf="item"
+     [routerLink]="link">
   <img [src]="item.brand" alt="" class="quick-access-item-brand">
   <img [src]="item.image" alt="" class="quick-access-item-image">
   <h2 class="quick-access-item-id">id товара: {{item.id}}</h2>

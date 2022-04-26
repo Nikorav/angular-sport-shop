@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {QuickAccessItem} from "../type";
+import {NavigationService} from "../../../services/navigation.service";
 
 @Component({
   selector: 'app-quick-access-panel-item',
@@ -9,15 +10,18 @@ import {QuickAccessItem} from "../type";
 export class QuickAccessPanelItemComponent implements OnInit {
 
   @Input()
-  public item?: QuickAccessItem;
+  public item: QuickAccessItem = {} as QuickAccessItem;
+
+  public link: string = "";
 
   @Input()
   public itemTemplate: any;
 
-  constructor() {
+  constructor(private navigationService: NavigationService) {
   }
 
   ngOnInit(): void {
+    this.link = this.navigationService.getProductLink(this.item.id);
   }
 
 }
