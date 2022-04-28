@@ -1,12 +1,14 @@
 <div class="auth-page">
   <div class="container">
-    <form class="auth-form">
+    <form class="auth-form" [formGroup]="formGroup" (submit)="onFormSubmit()">
       <h2 class="form-title">Login</h2>
       <label for="email" class="form-control">
-        <input class="form-control-input" type="text" id="email" placeholder="Email" autocomplete="off">
+        <input class="form-control-input" type="text" id="email" placeholder="Email" autocomplete="off"
+               formControlName="login">
       </label>
       <label for="password" class="form-control">
-        <input class="form-control-input" type="password" id="password" placeholder="Password" autocomplete="off">
+        <input class="form-control-input" type="password" id="password" placeholder="Password" autocomplete="off"
+               formControlName="password">
       </label>
       <label for="happy" class="form-control label-checkbox">
         <input type="checkbox" class="input-checkbox" id="happy">

@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {tap} from "rxjs";
+import {from, tap} from "rxjs";
 import {CartService} from "../../../services/cart.service";
 import {Product} from "../../../cart/cart.component";
 
@@ -22,7 +22,7 @@ export class ProductDetailsComponent {
 
   public cart = {} as any;
 
-  public product: Product = {name: "Test", price: 100, quantity: 1};
+  public product: Product = {name: "Test 2", price: 250, quantity: 2};
 
   public isAccordionItemOpen = true;
 
@@ -40,5 +40,9 @@ export class ProductDetailsComponent {
 
   public onAddToCartClick(): void {
     this.cartService.addProduct(this.product).subscribe();
+  }
+
+  public onCopyProductLink(): void {
+    from(navigator.clipboard.writeText(window.location.href));
   }
 }

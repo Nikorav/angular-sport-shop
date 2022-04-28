@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from "@angular/core";
+import {ChangeDetectionStrategy, Component} from "@angular/core";
 import {CartService} from "../services/cart.service";
 import {tap} from "rxjs";
 import {Cart} from "./types";
@@ -21,8 +21,6 @@ export class CartComponent {
     .pipe(
       tap(() =>{
         this.cart = this.cartService.getCartValue();
-        this.cdr.markForCheck();
-        this.cdr.detectChanges();
       })
     );
 
@@ -31,7 +29,6 @@ export class CartComponent {
   public catalogLink = this.navigationService.getProductListLink();
 
   constructor(private cartService: CartService,
-              private cdr: ChangeDetectorRef,
               private navigationService: NavigationService) {
   }
 
@@ -46,5 +43,4 @@ export class CartComponent {
   public onIncreaseProductQuantity(index: number): void {
     this.cartService.increaseProductQuantity(index).subscribe();
   }
-
 }

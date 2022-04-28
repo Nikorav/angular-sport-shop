@@ -11,6 +11,8 @@ import {NavigationService} from "../services/navigation.service";
 export class HeaderComponent implements OnInit {
 
   public cartLink = this.navigationService.getCartLink();
+  public profileLink = this.navigationService.getProfileLink();
+  public homeLink = this.navigationService.getMainLink();
 
   constructor(private authService: AuthService,
               private navigationService: NavigationService,

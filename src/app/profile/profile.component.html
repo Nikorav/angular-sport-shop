@@ -1,0 +1,19 @@
+<div class="profile-page">
+    <div class="profile">
+      <div class="profile-image">
+        <img [src]="userImageLink || '../../assets/slider.jpg'" alt="Profile Image">
+        <label class="profile-upload" for="user-image">
+          <input type="file" id="user-image" (change)="onImageUpload($event)">
+          <i class="fa fa-plus"></i>
+        </label>
+      </div>
+      <div class="profile-info">
+        <h2 class="profile-nickname title">
+          Николай Справцев
+        </h2>
+        <h3 class="profile-email">
+          test@mail.ru
+        </h3>
+      </div>
+    </div>
+</div>

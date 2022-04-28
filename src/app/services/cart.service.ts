@@ -3,6 +3,7 @@ import {CrudService} from "./crud.service";
 import {BehaviorSubject, Observable, tap} from "rxjs";
 import {Product} from "../cart/cart.component";
 import {Cart} from "../cart/types";
+import {Collection} from "../data-types/collections";
 
 @Injectable({
   providedIn: "root",
@@ -13,37 +14,24 @@ export class CartService {
 
   private cart: null | any = null;
 
-  constructor(private crudService: CrudService) {
-  }
-
-  public updateCart(items: any[]): Observable<void> {
-    return this.crudService.updateDocument("carts", this.cart.id, {
-      items: items,
-    })
-  }
+  constructor(private crudService: CrudService) {}
 
   public fetchCarts(): Observable<Cart<Product>[]> {
-    return this.crudService.fetchDataFromFirestore("carts")
+    return this.crudService.fetchDataFromFirestore(Collection.CARTS)
       .pipe(
         tap((value: any) => {
-          this.cart = value[0]
+          this.cart = value[0];
           this.carts$.next(value[0]);
         })
       );
   }
 
   public getCartValue(): Cart<Product> {
-    console.log(this.cart)
     return this.cart;
   }
 
   public selectCartValue(): Observable<Cart<Product> | null> {
     return this.carts$
-  }
-
-  public deleteItemFromCart(index: number): Observable<void> {
-    const products = this.cart?.items.filter((product: Product, productIndex: number) => index !== productIndex)
-    return this.updateCart(products);
   }
 
   public addProduct(product: Product): Observable<void> {
@@ -71,5 +59,16 @@ export class CartService {
     return  products[index].quantity === 0
       ? this.deleteItemFromCart(index)
       : this.updateCart(products);
+  }
+
+  public deleteItemFromCart(index: number): Observable<void> {
+    const products = this.cart.items.filter((product: Product, productIndex: number) => index !== productIndex)
+    return this.updateCart(products);
+  }
+
+  public updateCart(items: Product[]): Observable<void> {
+    return this.crudService.updateDocument(Collection.CARTS, this.cart.id, {
+      items: items,
+    })
   }
 }

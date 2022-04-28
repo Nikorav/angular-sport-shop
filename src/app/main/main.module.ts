@@ -20,7 +20,6 @@ const routes: Route[] = [
       {
         path: 'home',
         loadChildren: () => import('../home-page/home-page.module').then(module => module.HomePageModule),
-        canActivate: [AuthGuard]
       },
       {
         path: 'product',
@@ -29,7 +28,13 @@ const routes: Route[] = [
       {
         path: "cart",
         loadChildren: () => import("../cart/cart.module").then(module => module.CartModule),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "profile",
+        loadChildren:() => import("../profile/profile.module").then(module => module.ProfileModule)
       }
+
     ]
   }
 ]

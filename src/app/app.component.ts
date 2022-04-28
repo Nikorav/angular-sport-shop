@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CrudService} from "./services/crud.service";
 import {combineLatest} from "rxjs";
 import {CartService} from "./services/cart.service";
+import {Collection} from "./data-types/collections";
 
 
 @Component({
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     combineLatest([
-      this.crudService.fetchDataFromFirestore("items"),
+      this.crudService.fetchDataFromFirestore(Collection.ITEMS),
       this.cartService.fetchCarts(),
     ]).subscribe()
   }

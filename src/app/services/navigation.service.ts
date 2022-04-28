@@ -5,7 +5,8 @@ export enum LinkPath {
   PRODUCT_LIST = "productList",
   MAIN = "main",
   CART = "cart",
-  AUTH = "auth"
+  AUTH = "auth",
+  PROFILE = "profile"
 }
 
 export enum Routes {
@@ -13,7 +14,8 @@ export enum Routes {
   LIST = "list",
   MAIN = "main",
   CART = "cart",
-  AUTH = "auth"
+  AUTH = "auth",
+  PROFILE = "profile"
 }
 
 @Injectable({
@@ -27,6 +29,7 @@ export class NavigationService {
     [LinkPath.MAIN]: [Routes.MAIN],
     [LinkPath.CART]: [Routes.MAIN, Routes.CART],
     [LinkPath.AUTH]: [Routes.AUTH],
+    [LinkPath.PROFILE]: [Routes.MAIN, Routes.PROFILE],
   }
 
   private buildLink(path: string[], id?: string) {
@@ -59,6 +62,10 @@ export class NavigationService {
 
   public getAuthLink(): string {
     return this.buildLink(this.routeMap[LinkPath.AUTH]);
+  }
+
+  public getProfileLink(): string {
+    return this.buildLink(this.routeMap[LinkPath.PROFILE]);
   }
 
 }
