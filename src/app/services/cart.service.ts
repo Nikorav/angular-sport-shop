@@ -4,6 +4,7 @@ import {BehaviorSubject, Observable, tap} from "rxjs";
 import {Product} from "../cart/cart.component";
 import {Cart} from "../cart/types";
 import {Collection} from "../data-types/collections";
+import {QueryFn} from "@angular/fire/compat/firestore";
 
 @Injectable({
   providedIn: "root",
@@ -16,8 +17,8 @@ export class CartService {
 
   constructor(private crudService: CrudService) {}
 
-  public fetchCarts(): Observable<Cart<Product>[]> {
-    return this.crudService.fetchDataFromFirestore(Collection.CARTS)
+  public fetchCarts(queryFn: QueryFn): Observable<Cart<Product>[]> {
+    return this.crudService.fetchDataFromFirestore(Collection.CARTS, queryFn)
       .pipe(
         tap((value: any) => {
           this.cart = value[0];

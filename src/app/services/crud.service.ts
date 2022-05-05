@@ -1,8 +1,7 @@
 import {Injectable} from "@angular/core";
-import {AngularFirestore, DocumentReference} from "@angular/fire/compat/firestore";
+import {Action, AngularFirestore, DocumentReference, DocumentSnapshot, QueryFn} from "@angular/fire/compat/firestore";
 import {from, map, Observable, take} from "rxjs";
 import {DocumentChangeAction} from "@angular/fire/compat/firestore/interfaces";
-import firebase from "firebase/compat";
 
 @Injectable({
   providedIn: 'root',
@@ -12,22 +11,25 @@ export class CrudService {
   constructor(private firestore: AngularFirestore) {
   }
 
-  public fetchOneDocumentFromFirestore<T>(collectionName: string, id: string): Observable<T> {
-    return this.firestore.collection(collectionName).doc(id).get()
+  public fetchOneDocumentFromFirestore<T>(collectionName: string, id: string): Observable<T | null> {
+    return this.firestore.collection(collectionName).doc(id).snapshotChanges()
       .pipe(
-        map((snapshot: firebase.firestore.DocumentSnapshot<T | any>) => {
-          const {id} = snapshot;
-          const data = snapshot.data();
-          return {
+        map((snapshot: Action<DocumentSnapshot<T | any>>) => {
+          const {id, exists} = snapshot.payload;
+          const data = snapshot.payload.data();
+          return exists
+          ?
+            {
             id: id,
             ...data,
           }
+          : null;
         })
       )
   }
 
-  public fetchDataFromFirestore<T>(collectionName: string): Observable<T[]> {
-    return this.firestore.collection(collectionName).snapshotChanges()
+  public fetchDataFromFirestore<T>(collectionName: string, queryFn?: QueryFn): Observable<T[]> {
+    return this.firestore.collection(collectionName, queryFn).snapshotChanges()
       .pipe(
         map((actions: DocumentChangeAction<T | any>[]) => {
           return actions.map(document => {

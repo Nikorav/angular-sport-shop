@@ -15,7 +15,7 @@ export class ProductDetailsComponent {
 
   public cart$ = this.cartService.selectCartValue()
     .pipe(
-      tap(() =>{
+      tap(() => {
         this.cart = this.cartService.getCartValue();
       })
     );

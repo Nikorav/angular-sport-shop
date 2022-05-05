@@ -12,16 +12,13 @@ export class UploadService {
   public uploadFileAndGetMetadata(
     mediaFolderPath: string,
     fileToUpload: File,
-  ): [percent: Observable<number | undefined>, link: Observable<string | null>] {
+  ): Observable<string | null> {
     const filePath = this.getFileMediaPath(mediaFolderPath, fileToUpload.name);
     const uploadTask = this.getUploadTask(filePath, fileToUpload);
-    return [
-      uploadTask.percentageChanges(),
-      this.getDownloadUrl$(uploadTask, filePath)
-        .pipe(
-          startWith(null)
-        ),
-    ];
+    return this.getDownloadUrl$(uploadTask, filePath)
+      .pipe(
+        startWith(null)
+      );
   }
 
   private getDownloadUrl$(uploadTask: AngularFireUploadTask, path: string): Observable<string> {

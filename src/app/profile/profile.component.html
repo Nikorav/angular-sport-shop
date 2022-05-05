@@ -1,7 +1,8 @@
-<div class="profile-page">
+<ng-container *ngIf="user | async as user; else alternativeTemplate">
+  <div class="profile-page">
     <div class="profile">
       <div class="profile-image">
-        <img [src]="userImageLink || '../../assets/slider.jpg'" alt="Profile Image">
+        <img [src]="user.photoURL" alt="Profile Image">
         <label class="profile-upload" for="user-image">
           <input type="file" id="user-image" (change)="onImageUpload($event)">
           <i class="fa fa-plus"></i>
@@ -9,11 +10,20 @@
       </div>
       <div class="profile-info">
         <h2 class="profile-nickname title">
-          Николай Справцев
+          {{user?.name}}
         </h2>
         <h3 class="profile-email">
-          test@mail.ru
+          {{user?.email}}
+        </h3>
+        <h3 class="profile-balance">
+          {{user.balance}}
         </h3>
       </div>
     </div>
-</div>
+  </div>
+
+</ng-container>
+
+<ng-template #alternativeTemplate>
+  loading...
+</ng-template>

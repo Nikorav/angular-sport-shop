@@ -1,4 +1,5 @@
 export enum Collection {
   ITEMS = "items",
-  CARTS = "carts"
+  CARTS = "carts",
+  USERS = "users"
 }
