@@ -8,7 +8,7 @@ export enum LinkPath {
   AUTH = "auth",
   PROFILE = "profile",
   ACCOUNT = "account",
-  PAYMENT = 'Payment'
+  PAYMENT = "payment"
 }
 
 export enum Routes {
@@ -19,7 +19,7 @@ export enum Routes {
   AUTH = "auth",
   PROFILE = "profile",
   ACCOUNT = "account",
-  PAYMENT = 'Payment'
+  PAYMENT = "payment"
 }
 
 @Injectable({
@@ -34,8 +34,8 @@ export class NavigationService {
     [LinkPath.CART]: [Routes.MAIN, Routes.CART],
     [LinkPath.AUTH]: [Routes.AUTH],
     [LinkPath.ACCOUNT]: [Routes.MAIN,Routes.ACCOUNT],
-    [LinkPath.PROFILE]: [Routes.ACCOUNT, Routes.PROFILE],
-    [LinkPath.PAYMENT]: [Routes.ACCOUNT, Routes.PAYMENT]
+    [LinkPath.PROFILE]: [Routes.MAIN,Routes.ACCOUNT, Routes.PROFILE],
+    [LinkPath.PAYMENT]: [Routes.MAIN,Routes.ACCOUNT, Routes.PAYMENT]
   }
 
   private buildLink(path: string[], id?: string) {
@@ -79,6 +79,7 @@ export class NavigationService {
   }
 
   public getPaymentLink(): string {
+    console.log(this.buildLink((this.routeMap[LinkPath.PAYMENT])));
     return this.buildLink((this.routeMap[LinkPath.PAYMENT]));
   }
 

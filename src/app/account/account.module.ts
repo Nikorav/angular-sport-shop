@@ -17,6 +17,10 @@ const routes: Route[] = [
         path: 'profile',
         loadChildren: () => import('./profile/profile.module').then(module => module.ProfileModule),
       },
+      {
+        path: 'payment',
+        loadChildren: () => import('./payment/payment.module').then(module => module.PaymentModule),
+      },
     ]
   }
 ]
