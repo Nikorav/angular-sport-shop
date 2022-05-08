@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {UploadService} from "../services/upload.service";
+import {UploadService} from "../../services/upload.service";
 import {filter, Observable, of, switchMap, takeWhile} from "rxjs";
-import {CrudService} from "../services/crud.service";
-import {Collection} from "../data-types/collections";
-import {AuthService} from "../services/auth.service";
+import {CrudService} from "../../services/crud.service";
+import {Collection} from "../../data-types/collections";
+import {AuthService} from "../../services/auth.service";
 import firebase from "firebase/compat";
 
 

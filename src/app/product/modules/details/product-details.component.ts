@@ -11,6 +11,7 @@ import {Product} from "../../../cart/cart.component";
   styleUrls: ["./product-details.component.scss"],
 })
 export class ProductDetailsComponent {
+
   public productID = this.activatedRoute.snapshot.paramMap.get("productId");
 
   public cart$ = this.cartService.selectCartValue()

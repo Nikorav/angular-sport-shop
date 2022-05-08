@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from "../services/auth.service";
-import {Router} from "@angular/router";
 import {NavigationService} from "../services/navigation.service";
 
 @Component({
@@ -11,15 +9,10 @@ import {NavigationService} from "../services/navigation.service";
 export class HeaderComponent implements OnInit {
 
   public cartLink = this.navigationService.getCartLink();
-  public profileLink = this.navigationService.getProfileLink();
+  public accountLink = this.navigationService.getAccountLink();
   public homeLink = this.navigationService.getMainLink();
 
-  constructor(private authService: AuthService,
-              private navigationService: NavigationService,
-              private router: Router ) {
-  }
-  public logout():void{
-    this.authService.singOut().subscribe(()=> this.router.navigate(["/auth"]))
+  constructor(private navigationService: NavigationService) {
   }
 
   ngOnInit(): void {

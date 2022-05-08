@@ -34,7 +34,7 @@ const routes: Routes = [
     imports: [
       CommonModule,
       RouterModule.forChild(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule, QuickAccessPanelComponent]
   }
 )
 export class HomePageModule {

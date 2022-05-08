@@ -1,0 +1,27 @@
+<section class="account">
+  <div class="container">
+    <div class="account_sidebar">
+      <ul class="account_sidebar_list">
+       <ng-container>
+          <li class="account_sidebar_list_item" >
+            <a [routerLink]="profileLink" class="account_sidebar_list_link">Info
+              <i class="fa fa-home"></i>
+            </a>
+            <a [routerLink]="paymentLink" class="account_sidebar_list_link">Payment
+              <i class="fa fa-credit-card"></i>
+            </a>
+            <a (click)="logout()" [routerLink]="authLink"  class="account_sidebar_list_link">Exit
+              <i class="fa fa-sign-out"></i>
+            </a>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+    <div class="account_content">
+      <router-outlet>
+      </router-outlet>
+    </div>
+  </div>
+</section>
+
+<router-outlet></router-outlet>
