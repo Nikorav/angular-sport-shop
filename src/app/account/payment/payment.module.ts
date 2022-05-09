@@ -2,6 +2,7 @@ import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {Route, RouterModule} from "@angular/router";
 import {PaymentComponent} from "./payment.component";
+import {ReactiveFormsModule} from "@angular/forms";
 
 const routes: Route[] = [
   {
@@ -16,7 +17,8 @@ const routes: Route[] = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    RouterModule.forChild(routes)
   ],
   exports: [RouterModule],
 })
