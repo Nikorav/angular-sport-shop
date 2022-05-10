@@ -3,6 +3,7 @@ import {CommonModule} from "@angular/common";
 import {Route, RouterModule} from "@angular/router";
 import {PaymentComponent} from "./payment.component";
 import {ReactiveFormsModule} from "@angular/forms";
+import {TextMaskModule} from "angular2-text-mask";
 
 const routes: Route[] = [
   {
@@ -18,7 +19,8 @@ const routes: Route[] = [
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TextMaskModule,
   ],
   exports: [RouterModule],
 })

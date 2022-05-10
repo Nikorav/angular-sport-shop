@@ -33,9 +33,9 @@ export class NavigationService {
     [LinkPath.MAIN]: [Routes.MAIN],
     [LinkPath.CART]: [Routes.MAIN, Routes.CART],
     [LinkPath.AUTH]: [Routes.AUTH],
-    [LinkPath.ACCOUNT]: [Routes.MAIN,Routes.ACCOUNT],
-    [LinkPath.PROFILE]: [Routes.MAIN,Routes.ACCOUNT, Routes.PROFILE],
-    [LinkPath.PAYMENT]: [Routes.MAIN,Routes.ACCOUNT, Routes.PAYMENT]
+    [LinkPath.ACCOUNT]: [Routes.MAIN, Routes.ACCOUNT],
+    [LinkPath.PROFILE]: [Routes.MAIN, Routes.ACCOUNT, Routes.PROFILE],
+    [LinkPath.PAYMENT]: [Routes.MAIN, Routes.ACCOUNT, Routes.PAYMENT]
   }
 
   private buildLink(path: string[], id?: string) {
@@ -79,7 +79,6 @@ export class NavigationService {
   }
 
   public getPaymentLink(): string {
-    console.log(this.buildLink((this.routeMap[LinkPath.PAYMENT])));
     return this.buildLink((this.routeMap[LinkPath.PAYMENT]));
   }
 

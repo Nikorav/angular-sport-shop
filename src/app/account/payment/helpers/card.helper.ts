@@ -88,7 +88,7 @@ export const cards = Object.freeze([
     luhn: true,
   },
   {
-    type: CardBrandEnum.MASTERCARD,
+    type: CardBrandEnum.MASTER_CARD,
     patterns: [51, 52, 53, 54, 55, 22, 23, 24, 25, 26, 27],
     format: defaultFormat,
     mask: defaultMask16,
@@ -97,7 +97,7 @@ export const cards = Object.freeze([
     luhn: true,
   },
   {
-    type: CardBrandEnum.AMERICANEXPRESS,
+    type: CardBrandEnum.AMERICAN_EXPRESS,
     patterns: [34, 37],
     format: /(\d{1,4})(\d{1,6})?(\d{1,5})?/,
     mask: amexMask,
@@ -106,7 +106,7 @@ export const cards = Object.freeze([
     luhn: true,
   },
   {
-    type: CardBrandEnum.DINERSCLUB,
+    type: CardBrandEnum.DINERS_CLUB,
     patterns: [30, 36, 38, 39],
     format: /(\d{1,4})(\d{1,6})?(\d{1,4})?/,
     mask: dinersClubMask,
@@ -124,7 +124,7 @@ export const cards = Object.freeze([
     luhn: true,
   },
   {
-    type: CardBrandEnum.UNIONPAY,
+    type: CardBrandEnum.UNION_PAY,
     patterns: [62, 88],
     format: defaultFormat,
     mask: defaultMask19,

@@ -7,6 +7,7 @@ import {Collection} from "../../data-types/collections";
 import {AuthService} from "../../services/auth.service";
 import {finalize, switchMap, take} from "rxjs";
 import {NavigationService} from "../../services/navigation.service";
+import {getValidationConfigFromCardNo} from "./helpers/card.helper";
 
 @Component({
   selector: 'app-payment',
@@ -16,6 +17,8 @@ import {NavigationService} from "../../services/navigation.service";
 export class PaymentComponent implements OnInit {
 
   public cardNumberGroup: FormGroup = new FormGroup({});
+
+  public cardNumberControl: FormControl = new FormControl();
 
   constructor(private crudService: CrudService,
               private router: Router,
@@ -41,6 +44,8 @@ export class PaymentComponent implements OnInit {
       ]),
       value: new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000000)]),
     });
+
+    this.cardNumberControl = this.getCardNumberControl();
   }
 
   public submitForm(): void {
@@ -74,5 +79,13 @@ export class PaymentComponent implements OnInit {
           void this.router.navigate([this.navigationService.getProfileLink()]);
         })
       ).subscribe()
+  }
+
+  public cardMaskFunction(rawValue: string): Array<RegExp> {
+    const card = getValidationConfigFromCardNo(rawValue);
+    if (card) {
+      return card.mask;
+    }
+    return [/\d/];
   }
 }

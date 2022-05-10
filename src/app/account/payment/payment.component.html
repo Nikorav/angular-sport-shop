@@ -4,14 +4,21 @@
     <label for="cardNumber">
       Номер карты *
       <input
-        [formControl]="getCardNumberControl()"
+        [formControl]="cardNumberControl"
         id="cardNumber"
+        [textMask]="{mask: cardMaskFunction, guide: false, showMask: true}"
         placeholder="Номер карты">
 
-      <div *ngIf="getCardNumberControl().dirty">
-        <p [class.invalid]="getCardNumberControl().invalid"></p>
-        <p [class.valid]="getCardNumberControl().valid"></p>
+      <div *ngIf="cardNumberControl.dirty; else errorTemplate ">
+        <p [class.invalid]="cardNumberControl.invalid"></p>
+        <p [class.valid]="cardNumberControl.valid"></p>
       </div>
+
+      <ng-template #errorTemplate>
+        <div class="error" *ngIf="cardNumberControl.errors?.['required']">
+          Поле Номер карты не должно быть пустым
+        </div>
+      </ng-template>
     </label>
     <label for="cvv" class="medium">
       Cvv *
