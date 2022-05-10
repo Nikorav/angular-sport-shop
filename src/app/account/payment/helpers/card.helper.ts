@@ -14,6 +14,8 @@ export const getValidationConfigFromCardNo = (rawValue: string): CardValidation 
 
 const defaultFormat = /(\d{1,4})/g;
 
+export const dateMask = [...digitMask(2), '/', ...digitMask(2)]
+
 export interface CardValidation {
   type: CardBrandEnum;
   patterns: number[];

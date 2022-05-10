@@ -6,63 +6,75 @@
       <input
         [formControl]="cardNumberControl"
         id="cardNumber"
+        autocomplete="off"
         [textMask]="{mask: cardMaskFunction, guide: false, showMask: true}"
         placeholder="Номер карты">
 
-      <div *ngIf="cardNumberControl.dirty; else errorTemplate ">
-        <p [class.invalid]="cardNumberControl.invalid"></p>
-        <p [class.valid]="cardNumberControl.valid"></p>
+      <div class="errors">
+        <ng-container *ngFor="let error of (cardNumberControl.errors | keyvalue)">
+          <div class="error">
+            {{
+            error.key | errorPipe: {
+              type: error.key,
+              value: error.value?.[error.key]
+            }
+            }}
+          </div>
+        </ng-container>
       </div>
-
-      <ng-template #errorTemplate>
-        <div class="error" *ngIf="cardNumberControl.errors?.['required']">
-          Поле Номер карты не должно быть пустым
-        </div>
-      </ng-template>
     </label>
     <label for="cvv" class="medium">
       Cvv *
-      <input  type="number"
-              id="cvv"
-              name="cvv"
-              formControlName="cvv"
-              min="100"
-              max="9999"
-              placeholder="Cvv код вашей карты"
+      <input type="number"
+             id="cvv"
+             name="cvv"
+             formControlName="cvv"
+             placeholder="Cvv код вашей карты"
       >
-      <div class="error" *ngIf="cardNumberGroup.controls['cvv'].errors?.['min']">
-        Cvv должен быть больше 100
-      </div>
-      <div class="error" *ngIf="cardNumberGroup.controls['cvv'].errors?.['max']">
-        Cvv должен быть меньше 9999
-      </div>
-      <div class="error" *ngIf="cardNumberGroup.controls['cvv'].errors?.['required']">
-        Поле Cvv не должно быть пустым
+      <div class="errors">
+        <ng-container *ngFor="let error of (cardNumberGroup.controls['cvv'].errors | keyvalue)">
+          <div class="error">
+            {{error.key | errorPipe: {type: error.key, value: error.value?.[error.key]}   }}
+          </div>
+        </ng-container>
       </div>
 
     </label>
     <label for="date" class="medium">
       Месяц / Год *
-      <input  type="text" id="date" name="date" formControlName="date" placeholder="Месяц/год  вашей карты" maxlength="5">
-      <div class="error" *ngIf="cardNumberGroup.controls['date'].errors?.['pattern']">
-        Проверьте правильность поля пример:  07/23 или 11/25
-      </div>
-      <div class="error" *ngIf="cardNumberGroup.controls['date'].errors?.['required']">
-        Поле  Месяц / Год не должно быть пустым
+      <input type="text"
+             id="date" name="date"
+             formControlName="date"
+             placeholder="Месяц/год  вашей карты"
+             autocomplete="off"
+             [textMask]="{mask: dateMask,  guide: false, showMask: true}">
+
+      <div class="errors">
+        <ng-container *ngFor="let error of (cardNumberGroup.controls['date'].errors | keyvalue)">
+          <div class="error">
+            {{
+            error.key | errorPipe: {
+              type: error.key, value: error.value?.[error.key]
+            }
+            }}
+          </div>
+        </ng-container>
       </div>
 
     </label>
     <label for="value">
       Сумма пополнения *
-      <input  type="number" id="value" name="value" formControlName="value" placeholder="Сумма пополнения">
-      <div class="error" *ngIf="cardNumberGroup.controls['value'].errors?.['min']">
-        Минимальная сумма пополнения 1
-      </div>
-      <div class="error" *ngIf="cardNumberGroup.controls['value'].errors?.['max']">
-        Максимальная сумма пополнения 10000000
-      </div>
-      <div class="error" *ngIf="cardNumberGroup.controls['value'].errors?.['required']">
-        Поле  Сумма пополнения не должно быть пустым
+      <input type="number" id="value" name="value" formControlName="value" placeholder="Сумма пополнения">
+      <div class="errors">
+        <ng-container *ngFor="let error of cardNumberGroup.controls['value'].errors | keyvalue">
+          <div class="error">
+            {{
+            error.key | errorPipe: {
+              type: error.key, value: error.value?.[error.key]
+            }
+            }}
+          </div>
+        </ng-container>
       </div>
 
     </label>

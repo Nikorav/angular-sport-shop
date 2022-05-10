@@ -4,6 +4,7 @@ import {Route, RouterModule} from "@angular/router";
 import {PaymentComponent} from "./payment.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TextMaskModule} from "angular2-text-mask";
+import {ErrorPipeModule} from "../../pipes/error-pipe/error-pipe.module";
 
 const routes: Route[] = [
   {
@@ -14,13 +15,14 @@ const routes: Route[] = [
 
 @NgModule({
   declarations: [
-    PaymentComponent
+    PaymentComponent,
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     TextMaskModule,
+    ErrorPipeModule,
   ],
   exports: [RouterModule],
 })

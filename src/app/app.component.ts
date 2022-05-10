@@ -40,6 +40,7 @@ export class AppComponent implements OnInit{
         }
         return this.cartService.fetchCarts(getFirestoreCollectionQuery(conditions)).pipe(
           switchMap((carts) => {
+            console.log(carts)
             if(!carts.length) {
               return this.crudService.createDocument(Collection.CARTS, {
                 userID: user.uid,

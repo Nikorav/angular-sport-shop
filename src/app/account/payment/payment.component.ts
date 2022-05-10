@@ -1,13 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {luhnValidator} from "./helpers/luhnValidator";
+import {luhnValidator, testValidator} from "./helpers/luhnValidator";
 import {CrudService} from "../../services/crud.service";
 import {Router} from "@angular/router";
 import {Collection} from "../../data-types/collections";
 import {AuthService} from "../../services/auth.service";
 import {finalize, switchMap, take} from "rxjs";
 import {NavigationService} from "../../services/navigation.service";
-import {getValidationConfigFromCardNo} from "./helpers/card.helper";
+import {dateMask, getValidationConfigFromCardNo} from "./helpers/card.helper";
+
+
 
 @Component({
   selector: 'app-payment',
@@ -16,7 +18,20 @@ import {getValidationConfigFromCardNo} from "./helpers/card.helper";
 })
 export class PaymentComponent implements OnInit {
 
-  public cardNumberGroup: FormGroup = new FormGroup({});
+  public cardNumberGroup: FormGroup = new FormGroup({
+    cardNumber: new FormControl('', [
+      Validators.required,
+      luhnValidator(),
+    ]),
+    cvv: new FormControl('', [Validators.required, Validators.min(100), Validators.max(9999)]),
+    date: new FormControl('', [
+      Validators.required,
+      testValidator(),
+    ]),
+    value: new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000000)]),
+  });
+
+  public dateMask = dateMask;
 
   public cardNumberControl: FormControl = new FormControl();
 
@@ -31,26 +46,11 @@ export class PaymentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cardNumberGroup = new FormGroup({
-      cardNumber: new FormControl('', [
-        Validators.required,
-        Validators.minLength(12),
-        luhnValidator(),
-      ]),
-      cvv: new FormControl('', [Validators.required, Validators.min(100), Validators.max(9999)]),
-      date: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^(0[1-9]|1[0-2])/?((2[2-9])$)'),
-      ]),
-      value: new FormControl('', [Validators.required, Validators.min(1), Validators.max(1000000)]),
-    });
-
     this.cardNumberControl = this.getCardNumberControl();
   }
 
   public submitForm(): void {
     const {controls} = this.cardNumberGroup;
-    console.log(this.cardNumberGroup);
     if (this.cardNumberGroup.invalid) {
       Object.keys(controls).forEach((controlName) => controls[controlName].markAsTouched());
       return;
@@ -75,7 +75,7 @@ export class PaymentComponent implements OnInit {
             balance: finalBalance,
           })
         }),
-        finalize(()=> {
+        finalize(() => {
           void this.router.navigate([this.navigationService.getProfileLink()]);
         })
       ).subscribe()

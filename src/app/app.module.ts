@@ -23,6 +23,7 @@ import {AngularFireStorageModule} from "@angular/fire/compat/storage";
     HomePageModule
   ],
   providers: [],
+  exports: [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
