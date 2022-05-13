@@ -34,7 +34,12 @@
       <div class="errors">
         <ng-container *ngFor="let error of (cardNumberGroup.controls['cvv'].errors | keyvalue)">
           <div class="error">
-            {{error.key | errorPipe: {type: error.key, value: error.value?.[error.key]}   }}
+            {{
+            error.key | errorPipe: {
+              type: error.key,
+              value: error.value?.[error.key]
+            }
+            }}
           </div>
         </ng-container>
       </div>
@@ -54,7 +59,8 @@
           <div class="error">
             {{
             error.key | errorPipe: {
-              type: error.key, value: error.value?.[error.key]
+              type: error.key,
+              value: error.value?.[error.key]
             }
             }}
           </div>
@@ -70,7 +76,8 @@
           <div class="error">
             {{
             error.key | errorPipe: {
-              type: error.key, value: error.value?.[error.key]
+              type: error.key,
+              value: error.value?.[error.key]
             }
             }}
           </div>

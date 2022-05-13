@@ -7,7 +7,9 @@ enum ErrorKey {
   MIN = "min",
   MAX = "max",
   MOON = "luhnCheck",
-  MIN_LENGTH = "minlength"
+  MIN_LENGTH = "minlength",
+  MAX_LENGTH = "maxlength",
+  PATTERN = "pattern"
 }
 
 type ErrorPipeOptions = {
@@ -30,7 +32,9 @@ export class ErrorPipe implements PipeTransform {
     [ErrorKey.MAX]: "Максимальное значение поля: {number}",
     [ErrorKey.MIN]: "Минимальное значение поля: {number}",
     [ErrorKey.MOON]: "Номер карты невалиден",
-    [ErrorKey.MIN_LENGTH]: "Длина не должна быть меньше {number}, текущая длина {actual}"
+    [ErrorKey.MIN_LENGTH]: "Длина не должна быть меньше {number}, текущая длина {actual}",
+    [ErrorKey.MAX_LENGTH]: "Длина не должна превышать {number}, текущая длина {actual}",
+    [ErrorKey.PATTERN]: "Неверный формат данных"
   }
 
   transform(value: any, options: ErrorPipeOptions): string {
@@ -40,6 +44,7 @@ export class ErrorPipe implements PipeTransform {
 
   private replaceStringWithConditions(type: string, options: ErrorPipeOptions): string {
     const {value, field, actual} = options;
+    console.log(value, field, actual,type)
     return this.ErrorTextMap[type]
       .replace("{field}", field ?? "")
       .replace("{number}", `${value}`)

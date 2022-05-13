@@ -2,7 +2,7 @@
   <h2 class="title cart-title">
     Корзина
   </h2>
-  <ng-container *ngIf="cart$ | async; else emptyTemplate">
+  <ng-container *ngIf="(cart$ | async)?.items?.length; else emptyTemplate">
     <div class="table">
       <div class="row"
            *ngFor="let item of cart.items; let index = index">
@@ -39,8 +39,186 @@
         </div>
       </div>
     </div>
-  </ng-container>
+    <div class="order">
+      <div class="container">
+        <form class="order_form" [formGroup]="formGroup">
+          <div class="order_form_part part-one">
+            <h2 class="order_form_part_title">
+              Оформить заказ
+            </h2>
+            <label for="city" class="xl-big">
+              Населённый пункт *
+              <input type="text" id="city" name="city" formControlName="city" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['city'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+            <label for="street" class="xl-big">
+              Улица *
+              <input type="text" id="street" name="street" formControlName="street" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['street'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+            <label for="house" class="medium">
+              Дом *
+              <input type="number" id="house" name="house" formControlName="house" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['house'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+            <label for="corpus" class="medium">
+              Корпус
+              <input type="number" id="corpus" name="corpus">
+            </label>
+            <label for="entrance" class="medium">
+              Подъезд
+              <input type="number" id="entrance" name="entrance">
+              <!--<div class="error" *ngIf="orderForm.controls['entrance'].errors?.min">
+                Минимальный номер подъезда 1
+              </div>
+              <div class="error" *ngIf="orderForm.controls['entrance'].errors?.max">
+                Максимальный номер подъезда 36
+              </div>-->
+            </label>
+            <label for="floor" class="medium">
+              Этаж *
+              <input type="number" id="floor" name="floor" formControlName="floor" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['floor'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+            <label for="flat" class="medium">
+              Квартира *
+              <input type="number" id="flat" name="flat" formControlName="flat" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['flat'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+            <label for="message" class="xl-big">
+              Комментарий к заказу
+              <textarea id="message" name="message"></textarea>
+              <!--<div class="error" *ngIf="isControlInvalid('message')">
+                Максимальная длина сообщения 2048 символов
+              </div>-->
+            </label>
+            <h3 class="order_form_part_subtitle">Контактные данные</h3>
+            <label for="name" class="medium">
+              Имя *
+              <input id="name" name="name" formControlName="name" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['name'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+            <label for="surname" class="medium">
+              Фамилия *
+              <input id="surname" name="surname" formControlName="surname" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['surname'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+            <label for="email" class="medium">
+              Email *
+              <input type="text" id="email" name="email" formControlName="email" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['email'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+            <label for="phone" class="medium">
+              Телефон *
+              <input type="text" id="phone" name="phone" formControlName="phone" autocomplete="off">
+              <div class="errors">
+                <ng-container *ngFor="let error of (formGroup.controls['phone'].errors | keyvalue)">
+                  <div class="error">
+                    {{
+                    error.key | errorPipe: {
+                      type: error.key,
+                      value: error.value
+                    }
+                    }}
+                  </div>
+                </ng-container>
+              </div>
+            </label>
+          </div>
+          <button (click)="onSubmit()">Оформить заказ</button>
+        </form>
 
+      </div>
+    </div>
+  </ng-container>
 
   <ng-template #emptyTemplate>
     <p> Нет товаров в корзине, <a [routerLink]="catalogLink">добавьте их</a></p>

@@ -33,6 +33,7 @@ export class ProfileComponent {
               private authService: AuthService) {
   }
 
+
   public onImageUpload(event: Event): void {
     const {files} = event.target as HTMLInputElement;
     if (!files) {

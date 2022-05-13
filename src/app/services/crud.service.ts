@@ -49,7 +49,7 @@ export class CrudService {
     return (from(this.firestore.collection(collectionName).add(document)) as Observable<DocumentReference<T>>).pipe(take(1));
   }
 
-  public updateDocument<T>(collectionName: string, id: string, document: T): Observable<void> {
+  public updateDocument<T>(collectionName: string, id: string | undefined, document: T): Observable<void> {
     return from(this.firestore.collection(collectionName).doc(id).set(document, {merge: true})).pipe(take(1));
   }
 }

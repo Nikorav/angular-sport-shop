@@ -51,6 +51,7 @@ export class PaymentComponent implements OnInit {
 
   public submitForm(): void {
     const {controls} = this.cardNumberGroup;
+    console.log(controls);
     if (this.cardNumberGroup.invalid) {
       Object.keys(controls).forEach((controlName) => controls[controlName].markAsTouched());
       return;
@@ -66,11 +67,6 @@ export class PaymentComponent implements OnInit {
           let finalBalance = +user.balance || 0;
           finalBalance += +data.balance;
           console.log(finalBalance);
-          /*this.notification.success('Успех', 'Счёт пополнен', {
-            timeOut: 1800,
-            showProgressBar: true,
-            clickToClose: true,
-          });*/
           return this.crudService.updateDocument(Collection.USERS, this.authService.getUser()!.uid, {
             balance: finalBalance,
           })

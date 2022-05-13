@@ -1,3 +1,6 @@
+$red: #d23735;
+$green: #6fbb70;
+
 .cart {
   max-width: 1280px;
   padding: 20px 10px;
@@ -53,7 +56,6 @@
     }
   }
 
-
   &-item {
     &-value {
       font-size: 36px;
@@ -77,5 +79,146 @@
       background: #c4c4c4;
     }
   }
+
+  .order_form {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &_part {
+      &_subtitle {
+        width: 100%;
+        text-align: left;
+        font-size: 22px;
+        text-transform: uppercase;
+        margin: 20px 0;
+        color: #171717;
+      }
+
+      &_title {
+        width: 100%;
+        margin-top: 30px;
+        text-align: center;
+        font-size: 28px;
+        text-transform: uppercase;
+        margin-bottom: 25px;
+        color: #171717;
+      }
+
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
+
+      label {
+        font-size: 14px;
+        position: relative;
+
+        div.error {
+          position: absolute;
+          bottom: 5px;
+          left: 0;
+          right: 0;
+        }
+
+        padding-bottom: 25px;
+        margin: 10px 0;
+
+        &.small {
+          width: 18%;
+          @media screen and (max-width: 640.01px) {
+            width: 23%;
+          }
+        }
+
+        &.medium {
+          width: 45%;
+          @media screen and (max-width: 640.01px) {
+            width: 60%;
+          }
+        }
+
+        &.big {
+          width: 60%;
+          @media screen and (max-width: 640.01px) {
+            width: 70%;
+          }
+        }
+
+        &.xl-big {
+          width: 100%;
+        }
+
+        input {
+          width: 100%;
+          border: 2px solid #171717;
+          padding: 10px 0 10px 10px;
+          margin: 10px 0;
+
+          &.invalid, &.ng-dirty {
+            border-color: $red;
+          }
+
+          &.ng-valid {
+            border-color: $green;
+          }
+        }
+
+        textarea {
+          width: 100%;
+          border: 2px solid #171717;
+          padding: 10px 0 10px 10px;
+          min-height: 100px;
+          margin: 10px 0;
+
+          &.invalid, &.ng-dirty {
+            border-color: $red;
+          }
+
+          &.ng-valid {
+            border-color: $green;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 900.01px) {
+      width: 100%;
+      padding: 10px 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      justify-self: flex-start;
+      background-color: transparent;
+      margin-bottom: 20px;
+      transition: 0.3s all;
+      border: 2px solid #171717;
+
+      &:hover {
+        background-color: #67c434;
+        color: white;
+        border-color: #67c434;
+        transition: 0.3s all;
+      }
+    }
+
+    .errors {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: flex-start;
+      padding-top: 8px;
+      gap: 8px 0;
+
+      .error {
+        font-size: 16px;
+        color: red;
+      }
+    }
+  }
 }
+
 
